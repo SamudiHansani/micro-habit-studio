@@ -118,6 +118,7 @@ export default function NewHabitPage() {
               render={({ field, fieldState }) => (
                 <RadioGroup
                   {...field}
+                  onValueChange={field.onChange}
                   aria-invalid={fieldState.invalid}
                   className="flex"
                 >
