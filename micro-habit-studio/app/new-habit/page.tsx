@@ -65,166 +65,168 @@ export default function NewHabitPage() {
   };
 
   return (
-    <Card className="w-full max-w-lg mx-auto mt-20">
-      <CardHeader>
-        <CardTitle>Create New Habit</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <form id="new-habit-form" onSubmit={handleSubmit(onSubmit)}>
-          <FieldGroup>
-            <Controller
-              name="name"
-              control={control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="habit-name">Habit Name</FieldLabel>
-                  <Input
-                    {...field}
-                    id="habit-name"
-                    aria-invalid={fieldState.invalid}
-                    placeholder="e.g., Morning Jog"
-                    autoComplete="off"
-                  />
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
-              )}
-            />
-            <Controller
-              name="description"
-              control={control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="habit-description">
-                    Description
-                  </FieldLabel>
-                  <Input
-                    {...field}
-                    id="habit-description"
-                    aria-invalid={fieldState.invalid}
-                    placeholder="e.g., Jog for 30 minutes every morning"
-                    autoComplete="off"
-                  />
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
-              )}
-            />
-            <Controller
-              name="timeOfDay"
-              control={control}
-              render={({ field, fieldState }) => (
-                <RadioGroup
-                  {...field}
-                  onValueChange={field.onChange}
-                  aria-invalid={fieldState.invalid}
-                  className="flex"
-                >
-                  <FieldLabel htmlFor="morning">
-                    <Field orientation="horizontal">
-                      <FieldContent>
-                        <FieldTitle>Morning</FieldTitle>
-                      </FieldContent>
-                      <RadioGroupItem value="morning" id="morning" />
-                    </Field>
-                  </FieldLabel>
-                  <FieldLabel htmlFor="afternoon">
-                    <Field orientation="horizontal">
-                      <FieldContent>
-                        <FieldTitle>Afternoon</FieldTitle>
-                      </FieldContent>
-                      <RadioGroupItem value="afternoon" id="afternoon" />
-                    </Field>
-                  </FieldLabel>
-                  <FieldLabel htmlFor="evening">
-                    <Field orientation="horizontal">
-                      <FieldContent>
-                        <FieldTitle>Evening</FieldTitle>
-                      </FieldContent>
-                      <RadioGroupItem value="evening" id="evening" />
-                    </Field>
-                  </FieldLabel>
-                </RadioGroup>
-              )}
-            />
-            <Controller
-              name="icon"
-              control={control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel>Choose an Icon</FieldLabel>
+    <main className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+      <Card className="w-full max-w-lg mx-auto">
+        <CardHeader>
+          <CardTitle>Create New Habit</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <form id="new-habit-form" onSubmit={handleSubmit(onSubmit)}>
+            <FieldGroup>
+              <Controller
+                name="name"
+                control={control}
+                render={({ field, fieldState }) => (
+                  <Field data-invalid={fieldState.invalid}>
+                    <FieldLabel htmlFor="habit-name">Habit Name</FieldLabel>
+                    <Input
+                      {...field}
+                      id="habit-name"
+                      aria-invalid={fieldState.invalid}
+                      placeholder="e.g., Morning Jog"
+                      autoComplete="off"
+                    />
+                    {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]} />
+                    )}
+                  </Field>
+                )}
+              />
+              <Controller
+                name="description"
+                control={control}
+                render={({ field, fieldState }) => (
+                  <Field data-invalid={fieldState.invalid}>
+                    <FieldLabel htmlFor="habit-description">
+                      Description
+                    </FieldLabel>
+                    <Input
+                      {...field}
+                      id="habit-description"
+                      aria-invalid={fieldState.invalid}
+                      placeholder="e.g., Jog for 30 minutes every morning"
+                      autoComplete="off"
+                    />
+                    {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]} />
+                    )}
+                  </Field>
+                )}
+              />
+              <Controller
+                name="timeOfDay"
+                control={control}
+                render={({ field, fieldState }) => (
                   <RadioGroup
                     {...field}
                     onValueChange={field.onChange}
                     aria-invalid={fieldState.invalid}
-                    className="flex gap-2"
+                    className="flex"
                   >
-                    {iconOptions.map((option) => (
-                      <FieldLabel
-                        key={option.value}
-                        htmlFor={`icon-${option.value}`}
-                      >
-                        <Field orientation="horizontal">
-                          <FieldContent>
-                            <FieldTitle>{option.label}</FieldTitle>
-                          </FieldContent>
-                          <RadioGroupItem
-                            value={option.value}
-                            id={`icon-${option.value}`}
-                          />
-                        </Field>
-                      </FieldLabel>
-                    ))}
+                    <FieldLabel htmlFor="morning">
+                      <Field orientation="horizontal">
+                        <FieldContent>
+                          <FieldTitle>Morning</FieldTitle>
+                        </FieldContent>
+                        <RadioGroupItem value="morning" id="morning" />
+                      </Field>
+                    </FieldLabel>
+                    <FieldLabel htmlFor="afternoon">
+                      <Field orientation="horizontal">
+                        <FieldContent>
+                          <FieldTitle>Afternoon</FieldTitle>
+                        </FieldContent>
+                        <RadioGroupItem value="afternoon" id="afternoon" />
+                      </Field>
+                    </FieldLabel>
+                    <FieldLabel htmlFor="evening">
+                      <Field orientation="horizontal">
+                        <FieldContent>
+                          <FieldTitle>Evening</FieldTitle>
+                        </FieldContent>
+                        <RadioGroupItem value="evening" id="evening" />
+                      </Field>
+                    </FieldLabel>
                   </RadioGroup>
-                </Field>
-              )}
-            />
-            <Controller
-              name="color"
-              control={control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel>Choose a Color</FieldLabel>
-                  <RadioGroup
-                    {...field}
-                    onValueChange={field.onChange}
-                    aria-invalid={fieldState.invalid}
-                    className="flex gap-2"
-                  >
-                    {colorOptions.map((option) => (
-                      <FieldLabel
-                        key={option.value}
-                        htmlFor={`color-${option.value}`}
-                      >
-                        <Field
-                          orientation="horizontal"
-                          className="rounded-lg border border-zinc-200 p-3 text-white shadow-sm transition focus-within:border-slate-400"
-                          style={{ backgroundColor: option.value }}
+                )}
+              />
+              <Controller
+                name="icon"
+                control={control}
+                render={({ field, fieldState }) => (
+                  <Field data-invalid={fieldState.invalid}>
+                    <FieldLabel>Choose an Icon</FieldLabel>
+                    <RadioGroup
+                      {...field}
+                      onValueChange={field.onChange}
+                      aria-invalid={fieldState.invalid}
+                      className="flex gap-2"
+                    >
+                      {iconOptions.map((option) => (
+                        <FieldLabel
+                          key={option.value}
+                          htmlFor={`icon-${option.value}`}
                         >
-                          <FieldContent>
-                            <FieldTitle>{option.label}</FieldTitle>
-                          </FieldContent>
-                          <RadioGroupItem
-                            value={option.value}
-                            id={`color-${option.value}`}
-                          />
-                        </Field>
-                      </FieldLabel>
-                    ))}
-                  </RadioGroup>
-                </Field>
-              )}
-            />
-          </FieldGroup>
-        </form>
-      </CardContent>
-      <CardFooter>
-        <Button type="submit" form="new-habit-form" className="w-full">
-          Create Habit
-        </Button>
-      </CardFooter>
-    </Card>
+                          <Field orientation="horizontal">
+                            <FieldContent>
+                              <FieldTitle>{option.label}</FieldTitle>
+                            </FieldContent>
+                            <RadioGroupItem
+                              value={option.value}
+                              id={`icon-${option.value}`}
+                            />
+                          </Field>
+                        </FieldLabel>
+                      ))}
+                    </RadioGroup>
+                  </Field>
+                )}
+              />
+              <Controller
+                name="color"
+                control={control}
+                render={({ field, fieldState }) => (
+                  <Field data-invalid={fieldState.invalid}>
+                    <FieldLabel>Choose a Color</FieldLabel>
+                    <RadioGroup
+                      {...field}
+                      onValueChange={field.onChange}
+                      aria-invalid={fieldState.invalid}
+                      className="flex gap-2"
+                    >
+                      {colorOptions.map((option) => (
+                        <FieldLabel
+                          key={option.value}
+                          htmlFor={`color-${option.value}`}
+                        >
+                          <Field
+                            orientation="horizontal"
+                            className="rounded-lg border border-zinc-200 p-3 text-white shadow-sm transition focus-within:border-slate-400"
+                            style={{ backgroundColor: option.value }}
+                          >
+                            <FieldContent>
+                              <FieldTitle>{option.label}</FieldTitle>
+                            </FieldContent>
+                            <RadioGroupItem
+                              value={option.value}
+                              id={`color-${option.value}`}
+                            />
+                          </Field>
+                        </FieldLabel>
+                      ))}
+                    </RadioGroup>
+                  </Field>
+                )}
+              />
+            </FieldGroup>
+          </form>
+        </CardContent>
+        <CardFooter>
+          <Button type="submit" form="new-habit-form" className="w-full">
+            Create Habit
+          </Button>
+        </CardFooter>
+      </Card>
+    </main>
   );
 }
